@@ -1,0 +1,13 @@
+<div class="pb-8 container mx-auto">
+  <h2 class="pl-4 text-2xl lg:text-3xl font-bold mb-2 flex items-center gap-3">
+    <ion-icon class="text-3xl" name="shield-checkmark-outline"></ion-icon>
+    Nuestros promotores verificados
+  </h2>
+  <swiper [config]="swiperOptions">
+    @for (item of [1, 1, 1, 1, 1, 1, 1, 1]; track $index) {
+      <ng-template swiperSlide>
+        <app-promotores-card></app-promotores-card>
+      </ng-template>
+    }
+  </swiper>
+</div>

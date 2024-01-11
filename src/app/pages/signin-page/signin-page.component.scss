@@ -1,0 +1,72 @@
+.content {
+  @apply bg-indigo-200;
+  .wrapper-login {
+    @apply bg-white shadow-lg rounded-lg  p-8 relative;
+    .title-wrapper {
+      @apply bg-indigo-400 shadow-lg rounded py-2 px-4 flex items-center justify-center absolute -top-6 left-10;
+    }
+    #login-form {
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      .input-wrapper {
+        height: 60px;
+        opacity: 1;
+        transition:
+          height 0.3s ease,
+          opacity 0.3s ease;
+        overflow: hidden;
+        @apply flex flex-col mb-4;
+        input,
+        select {
+          @apply py-1 px-4 outline-none;
+          border-bottom: 2px solid #ccc;
+          &:focus {
+            border-bottom: 2px solid indigo;
+          }
+          transition: border-color 0.3s ease;
+        }
+        input,
+        select {
+          &.ng-invalid.ng-touched {
+            border-bottom: 2px solid rgb(242, 46, 7);
+          }
+        }
+      }
+      .input-wrapper.hidde-confirm-password {
+        height: 0px;
+        opacity: 0;
+      }
+      .btn-wrapper-login {
+        .btn {
+          @apply bg-indigo-900 px-4 py-1 text-white rounded;
+        }
+      }
+      &.ng-invalid {
+        .btn-wrapper-login {
+          .btn[type="submit"] {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .btns-rol {
+        @apply basis-1/2 z-10 p-2 text-white outline-none transition-all;
+      }
+
+      .btn-wrapper-register {
+        margin-top: 1rem;
+        .btn {
+          @apply underline text-slate-900;
+        }
+      }
+    }
+  }
+}

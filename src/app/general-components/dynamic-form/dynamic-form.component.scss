@@ -1,0 +1,58 @@
+#dynamic-form {
+  .input-wrapper {
+    min-height: 60px;
+    opacity: 1;
+    transition:
+      height 0.3s ease,
+      opacity 0.3s ease;
+    overflow: hidden;
+    @apply flex flex-col mb-4;
+    textarea {
+      resize: vertical;
+    }
+
+    // select {
+    //   @apply outline-none border-none;
+    // }
+    input,
+    textarea {
+      @apply py-1 px-4 outline-none;
+      border-bottom: 2px solid #ccc;
+      &:focus {
+        border-bottom: 2px solid indigo;
+      }
+      transition: border-color 0.3s ease;
+    }
+    input.ng-invalid.ng-touched,
+    textarea.ng-invalid.ng-touched {
+      border-bottom: 2px solid rgb(242, 46, 7);
+    }
+  }
+  .input-wrapper.hidde-confirm-password {
+    height: 0px;
+    opacity: 0;
+  }
+  .btn-wrapper-login {
+    @apply flex gap-2 justify-center;
+    .btn {
+      @apply bg-indigo-900 px-4 py-1 text-white rounded;
+    }
+    .secondary-btn {
+      @apply bg-white border border-indigo-900 px-4 py-1 text-indigo-900 rounded;
+    }
+  }
+  &.ng-invalid {
+    .btn-wrapper-login {
+      .btn[type="submit"] {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .btn-wrapper-register {
+    margin-top: 1rem;
+    .btn {
+      @apply underline text-slate-900;
+    }
+  }
+}

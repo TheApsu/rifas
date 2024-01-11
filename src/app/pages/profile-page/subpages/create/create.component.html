@@ -1,0 +1,28 @@
+<button
+  [ngClass]="{
+    'show-list': this.rifasSv.segment === 'create',
+    'show-create': this.rifasSv.segment !== 'create'
+  }"
+  class="transition-all animate__animated animate__fadeInRight"
+  (click)="toggleView()"
+>
+  @if (this.rifasSv.segment !== "create") {
+    <ion-icon name="arrow-back-outline" class="mr-2 text-white"></ion-icon>
+  }
+  {{ this.rifasSv.segment === "create" ? "Ver rifas creadas" : "Volver" }}
+  @if (this.rifasSv.segment === "create") {
+    <ion-icon name="arrow-forward-outline" class="ml-2 text-white"></ion-icon>
+  }
+</button>
+@switch (this.rifasSv.segment) {
+  @case ("create") {
+    <div class="animate__animated animate__fadeInUp">
+      <app-create-or-edit></app-create-or-edit>
+    </div>
+  }
+  @case ("list") {
+    <div class="animate__animated animate__fadeInUp">
+      <app-created-list></app-created-list>
+    </div>
+  }
+}

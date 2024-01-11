@@ -1,0 +1,29 @@
+.rounded-corners {
+  @apply rounded-tl-2xl rounded-tr-2xl;
+}
+
+.loader-content {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #c8b8ff;
+  .progress-bar {
+    width: 30%;
+    height: 100%;
+    background-color: #4d17ff;
+    animation: progress 1.5s infinite;
+  }
+  z-index: 2;
+}
+
+@keyframes progress {
+  0% {
+    width: 30%;
+    transform: translateX(calc(calc(100vw / 3) * -1));
+  }
+  100% {
+    width: 1%;
+    transform: translateX(calc(calc(100vw / 3) * 6));
+  }
+}

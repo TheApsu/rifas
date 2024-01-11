@@ -1,0 +1,71 @@
+@if (formGroup) {
+  <form
+    id="dynamic-form"
+    class="relative pt-8"
+    [formGroup]="formGroup"
+    autocomplete="new-password"
+    #form
+    (submit)="submit($event)"
+  >
+    @for (field of fields; track $index) {
+      @if (field.type === "imageCarrousel") {
+        <app-dynamic-form-carrousel-images
+          [field]="field"
+          [uri]="uriImage"
+          #dynamicFormCarrouselImages
+        ></app-dynamic-form-carrousel-images>
+      } @else if (field.type === "textarea") {
+        <div class="input-wrapper">
+          <label [for]="field.fieldName">
+            {{ field.label }}
+          </label>
+          <textarea
+            [placeholder]="field.placeholder"
+            [autocomplete]="field.fieldName"
+            [formControlName]="field.fieldName"
+          ></textarea>
+        </div>
+      } @else if (field.type === "select") {
+        <div class="input-wrapper">
+          <label [for]="field.fieldName">
+            {{ field.label }}
+          </label>
+          <select
+            class="border rounded outline-none p-2"
+            [formControlName]="field.fieldName"
+            required
+          >
+            <option value="" disabled selected hidden>Selecciona uno...</option>
+            @for (option of field.options; track $index) {
+              <option [value]="option.value">{{ option.label }}</option>
+            }
+          </select>
+        </div>
+      } @else {
+        <div class="input-wrapper">
+          <label [for]="field.fieldName">
+            {{ field.label }}
+          </label>
+          <input
+            [placeholder]="field.placeholder"
+            [type]="field.type"
+            [autocomplete]="field.fieldName"
+            [formControlName]="field.fieldName"
+          />
+        </div>
+      }
+    }
+    <div class="btn-wrapper-login text-center">
+      <button type="submit" class="btn" [disabled]="formGroup.invalid">
+        Enviar
+      </button>
+      <button
+        type="submit"
+        class="secondary-btn"
+        [disabled]="formGroup.invalid"
+      >
+        Limpiar
+      </button>
+    </div>
+  </form>
+}

@@ -1,0 +1,26 @@
+<div class="wrapper flex items-center gap-4">
+  <div class="flex gap-1 items-center">
+    <button class="flex gap-1 items-center" (click)="changeState()">
+      <ion-icon name="location-outline" class="text-2xl"></ion-icon>
+      <span>
+        {{ locationSv.selected?.estado }}
+      </span>
+    </button>
+  </div>
+  <div class="flex-1 searchbar rounded-3xl overflow-hidden flex">
+    <div class="bg-white flex-1 p-3" (keyup.enter)="search()">
+      <app-searchbar-input
+        [config]="config"
+        (emitSearchValue)="setSearch($event)"
+      ></app-searchbar-input>
+    </div>
+    <div class="bg-white flex justify-center items-center w-10 pr-2">
+      <button
+        (click)="search()"
+        class="text-black h-full flex justify-center items-center"
+      >
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+ion-button {
+  margin: 0;
+}
+
+.selected-page {
+  @apply bg-indigo-600 text-white;
+}
+
+.toolbar {
+  display: flex;
+  .btn {
+    --color: var(--title);
+    @apply py-2 px-4 border transition-colors;
+  }
+  .btn-back {
+    height: 100%;
+    --border-radius: 10px 0px 0px 10px !important;
+  }
+  .btn-next {
+    height: 100%;
+    --border-radius: 0px 10px 10px 0px;
+  }
+  .btn-back,
+  .btn-next {
+    --box-shadow: none !important;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .btn,
+  .icon {
+    font-size: 12px;
+  }
+}
+
+.btn_control {
+  --background: transparent;
+  ion-icon {
+    color: var(--title);
+  }
+}

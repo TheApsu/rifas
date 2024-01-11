@@ -1,0 +1,30 @@
+<div class="wrapper mb-4">
+  <swiper [config]="swiperOptions">
+    @for (item of uploadedImages; track $index) {
+      <ng-template swiperSlide>
+        <img [src]="url + item" />
+      </ng-template>
+    }
+    <ng-template swiperSlide>
+      <div
+        appDragAndDrop
+        (emitImages)="setImages($event)"
+        class="rounded uploadImages border-4 border-dotted p-16 text-center transition-colors"
+      >
+        <p class="text-lg">
+          Arrastra y suelta imagenes aquí ó
+          <b class="underline cursor-pointer" (click)="inputFiles.click()">
+            Busca
+          </b>
+        </p>
+      </div>
+      <input
+        [multiple]="field.multiple"
+        type="file"
+        (change)="upload($event)"
+        hidden
+        #inputFiles
+      />
+    </ng-template>
+  </swiper>
+</div>

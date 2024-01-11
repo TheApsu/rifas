@@ -1,0 +1,27 @@
+<div class="container p-4">
+  <div
+    class="searchbar mt-2 mb-4 rounded-full border overflow-hidden p-2 flex gap-2 items-center"
+  >
+    <ion-icon name="search-outline"></ion-icon>
+    <app-searchbar-input
+      [config]="config"
+      (emitSearchValue)="setSearch($event)"
+    ></app-searchbar-input>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-x-2">
+    @for (item of locations; track $index) {
+      <div
+        [ngClass]="{
+          selected: locationSv.selected?.id_estado === item.id_estado
+        }"
+        (click)="setLocation(item)"
+        class="item rounded border mb-2 p-2 flex items-center gap-2 cursor-pointer hover:bg-slate-200"
+      >
+        <ion-icon name="location-outline"></ion-icon>
+        <p>
+          {{ item.estado }}
+        </p>
+      </div>
+    }
+  </div>
+</div>

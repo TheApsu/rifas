@@ -1,0 +1,12 @@
+<section id="search" class="bg-white pt-8">
+  <div class="container m-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      @for (item of arr; track $index) {
+      <app-card-product [product]="{ id: $index }"></app-card-product>
+      }
+    </div>
+  </div>
+  <div class="mt-8">
+    <app-pager [actualPage]="1" [totalPages]="300"></app-pager>
+  </div>
+</section>

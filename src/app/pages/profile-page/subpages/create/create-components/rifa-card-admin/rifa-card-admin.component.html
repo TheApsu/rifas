@@ -1,0 +1,45 @@
+<div class="table mt-8 w-full">
+  <div
+    class="grid grid-cols-1 md:grid-cols-5 gap-2 shadow-md rounded-lg overflow-hidden"
+  >
+    <img
+      class="col-span-1 md:col-span-2 h-52 w-full object-cover"
+      [src]="url + 'rifas/' + item.images[0]"
+    />
+    <div class="col-span-1 md:col-span-2 p-4">
+      <h4 class="text-xl font-bold mb-2">
+        {{ item.name }}
+      </h4>
+      <p class="text-sm">
+        Fecha fin: <b> {{ item.endDate | date: "longDate" }} </b>
+      </p>
+      <p class="text-sm">
+        Nrs. Totales <b> {{ item.numbersQuantity }} </b>
+      </p>
+      <p class="text-sm">
+        Nrs. Disponibles: <b> {{ item.availableNumbersQuantity }} </b>
+      </p>
+      <p class="text-sm">
+        Ubicación: <b> {{ item.location }} </b>
+      </p>
+      <p class="text-sm">
+        Precio: <b>$ {{ item.price }} </b>
+      </p>
+    </div>
+    <div
+      class="col-span-1 grid grid-cols-2 md:flex md:flex-col items-center justify-center"
+    >
+      <button
+        class="bg-red-600 w-full h-full p-4 md:p-0 col-span-1 active:opacity-80 transition-opacity"
+      >
+        <ion-icon class="text-white text-2xl" name="trash-outline"></ion-icon>
+      </button>
+      <button
+        (click)="goTo('edit')"
+        class="bg-indigo-800 w-full h-full p-4 md:p-0 col-span-1 active:opacity-80 transition-opacity"
+      >
+        <ion-icon class="text-white text-2xl" name="create-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</div>

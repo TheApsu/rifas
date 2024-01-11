@@ -1,0 +1,18 @@
+<div class="wrapper p-4">
+  <div class="toolbar flex justify-between mb-2">
+    <h2 class="font-bold text-3xl">Números pendientes</h2>
+    <button (click)="close()">
+      <ion-icon class="text-3xl" name="close"></ion-icon>
+    </button>
+  </div>
+  <div class="grid grid-cols-10">
+    @for (item of numbers; track item) {
+    <div
+      class="border p-2 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors"
+    >
+      {{ $index }}
+    </div>
+
+    }
+  </div>
+</div>

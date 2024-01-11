@@ -1,0 +1,70 @@
+<div class="wrapper px-4">
+  <div class="toolbar w-full overflow-auto">
+    <div [hidden]="!expanded" class="m-auto">
+      <div>
+        <button
+          (click)="expanded = false"
+          class="underline block text-left text-blue-400 cursor-pointer hover:text-blue-300"
+        >
+          Volver
+        </button>
+      </div>
+      <div class="pages-expanded">
+        <div class="total-pages flex overflow-auto">
+          @for (a of pages; track $index) {
+            <button
+              [id]="'b' + a"
+              [ngClass]="{ 'selected-page': a === actualPage }"
+              fill="clear"
+              class="btn"
+              (click)="changePage(a)"
+            >
+              {{ a }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+    <div [hidden]="expanded" class="m-auto flex">
+      <div class="controls back">
+        <button
+          (click)="changeWithBtn('back')"
+          class="px-4 btn-back btn_control"
+        >
+          <ion-icon class="icon" name="arrow-back-outline"></ion-icon>
+        </button>
+      </div>
+
+      <div class="pages">
+        @for (a of (pages | fixPages: actualPage)[0]; track $index) {
+          <button
+            [id]="'b' + a"
+            [ngClass]="{ 'selected-page': a === actualPage }"
+            class="btn"
+            (click)="changePage(a)"
+          >
+            {{ a }}
+          </button>
+        }
+        @if (!(pages | fixPages: actualPage)[1]) {
+          <button
+            class="btn"
+            [id]="pages[pages.length - 1]"
+            (click)="changePage(pages[pages.length - 1])"
+          >
+            {{ pages[pages.length - 1] }}
+          </button>
+        }
+      </div>
+
+      <div class="controls next">
+        <button
+          (click)="changeWithBtn('next')"
+          class="px-4 btn-next btn_control"
+        >
+          <ion-icon class="icon" name="arrow-forward-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

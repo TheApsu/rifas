@@ -1,0 +1,18 @@
+<div class="avatar m-auto w-60 h-60 relative">
+  <img
+    class="overflow-hidden rounded-full h-full w-full object-cover"
+    [src]="
+      auxAvatar
+        ? url + auxAvatar
+        : 'https://www.digitary.net/wp-content/uploads/2021/07/Generic-Profile-Image.png'
+    "
+  />
+  <button
+    type="button"
+    (click)="avatarInput.click()"
+    class="absolute top-4 right-1 w-20 h-20 bg-white rounded-full p-4 shadow-md active:shadow-lg transition-shadow"
+  >
+    <ion-icon class="w-full h-full" name="cloud-upload-outline"></ion-icon>
+  </button>
+  <input type="file" hidden #avatarInput (change)="changeAvatar($event)" />
+</div>

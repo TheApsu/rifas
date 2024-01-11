@@ -1,0 +1,29 @@
+<section class="wrapper-comments flex lg:w-1/2 flex-col m-auto">
+  <h3 class="text-3xl mb-8">Preguntas y respuestas</h3>
+
+  <p class="font-bold">Preguntale a <strong>La rapida</strong></p>
+
+  <div
+    class="wrapper-comments_searchbar flex gap-2 mt-2"
+    (keyup.enter)="send()"
+  >
+    <div class="border rounded p-4 flex-1">
+      <app-searchbar-input
+        (emitSearchValue)="setValue($event)"
+        [config]="config"
+      ></app-searchbar-input>
+    </div>
+    <button (click)="send()" class="py-4 px-6 bg-indigo-900 rounded text-white">
+      Preguntar
+    </button>
+  </div>
+  <div class="box-comments border p-4 mt-4">
+    <h5 class="font-bold mb-2">Últimas realizadas</h5>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores amet,
+      quia dolorem repellendus nobis unde aliquid similique blanditiis omnis,
+      magni excepturi perferendis culpa eaque, molestias officiis. Ipsa aliquam
+      quibusdam illo?
+    </p>
+  </div>
+</section>

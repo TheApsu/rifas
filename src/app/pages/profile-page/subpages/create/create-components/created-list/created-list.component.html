@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div
+    class="searchbar mt-4 rounded-full border overflow-hidden p-4 flex gap-2 items-center"
+  >
+    <ion-icon name="search-outline"></ion-icon>
+    <app-searchbar-input
+      (emitSearchValue)="setSearch($event)"
+    ></app-searchbar-input>
+  </div>
+  @for (item of rifasSv.createdRifas(); track $index) {
+    <div class="item">
+      <app-rifa-card-admin [item]="item"></app-rifa-card-admin>
+    </div>
+  } @empty {
+    @if (rifasSv.loading) {
+      <div class="loading p-4">
+        <p class="font-bold text-lg">Cargando...</p>
+      </div>
+    } @else {
+      <div class="loading p-4">
+        <p class="font-bold text-lg">Aún no has creado ninguna rifa</p>
+      </div>
+    }
+  }
+  <div class="container mt-4">
+    <app-pager
+      [actualPage]="rifasSv.page"
+      [totalPages]="rifasSv.totalPages"
+      (upPage)="changePage($event)"
+    ></app-pager>
+  </div>
+</div>

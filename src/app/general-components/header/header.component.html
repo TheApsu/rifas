@@ -1,0 +1,43 @@
+<header class="bg-indigo-900 text-white w-full relative">
+  <nav class="relative p-4 flex justify-between items-center">
+    <div id="logo-wrapper" class="cursor-pointer" routerLink="home">
+      <span class="text-2xl">Rifas<span class="font-bold">YA</span></span>
+    </div>
+    <div class="hidden lg:block lg:basis-2/3">
+      <app-searchbar></app-searchbar>
+    </div>
+    <div class="flex-center flex lg:pr-4 gap-2">
+      <button
+        title="Mostrar buscador"
+        class="flex flex-center lg:hidden"
+        (click)="opened = !opened"
+      >
+        <ion-icon class="text-3xl" name="search-circle-outline"></ion-icon>
+      </button>
+
+      <button
+        title="Iniciar sesión"
+        class="flex flex-center"
+        (click)="openPopover($event)"
+      >
+        <ion-icon class="text-3xl" name="person-circle-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div
+      class="absolute z-10 menu-mobile p-2 rounded-bl-2xl rounded-br-2xl top-full h-fit left-0 bottom-0 w-full bg-indigo-900 text-center lg:hidden flex flex-col"
+      [ngClass]="{
+        flex: opened,
+        hidden: !opened
+      }"
+    >
+      <app-searchbar></app-searchbar>
+    </div>
+  </nav>
+</header>
+<div class="alert bg-yellow-100 p-4 sticky top-0 w-full z-50">
+  <p class="text-slate-900">
+    Debes escoger un plan antes de comenzar a publicar rifas.
+    <a routerLink="/profile/settings" class="font-bold underline">Escoger</a>
+  </p>
+</div>

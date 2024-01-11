@@ -1,0 +1,47 @@
+.wrapper {
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 20.625rem;
+    @media screen and (min-width: 768px) {
+      height: 30.625rem;
+    }
+  }
+  .content {
+    @media screen and (min-width: 768px) {
+      height: 30.625rem;
+    }
+    overflow: auto;
+    .plan-container {
+      @apply border rounded p-6 mb-4;
+      .plan-name-container {
+        @apply flex gap-4 items-center;
+        .plan-name {
+          @apply font-bold text-xl;
+        }
+        .badge {
+          @apply bg-indigo-500 border border-indigo-900 text-white rounded-full py-1 px-4 text-xs font-bold;
+        }
+      }
+      .advantages {
+        @apply mt-4;
+        li {
+          list-style: none;
+          @apply font-medium;
+        }
+        li.locked {
+          @apply font-light text-slate-400;
+        }
+      }
+      .choose-btn {
+        @apply w-full p-2 text-lg text-white bg-indigo-700 rounded mt-4;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .generic-overlay-element-content.verification {
+    padding: 0;
+  }
+}

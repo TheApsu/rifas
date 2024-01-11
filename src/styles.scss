@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap");
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "swiper/scss/pagination";
+@import "assets/overlay-styles.scss";
+@import "assets/toast.scss";
+
+@keyframes ripple {
+  0% {
+    opacity: 1;
+    transform: scale(0, 0);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(15, 15);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  &::before {
+    content: "";
+    position: absolute;
+    opacity: 0;
+  }
+}
+
+.ripple-effect.keyframes::after {
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, -50%) scale(1, 1);
+  background-color: rgba(160, 160, 160, 0.2);
+  border-radius: 100%;
+}
+
+.ripple-effect.keyframes:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  position: relative;
+}

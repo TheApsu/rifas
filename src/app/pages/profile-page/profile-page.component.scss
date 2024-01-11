@@ -1,0 +1,9 @@
+.link-tag {
+  &.active-link {
+    @apply bg-indigo-700 text-white text-lg font-bold;
+    ion-icon {
+      font-size: 1.2rem;
+    }
+  }
+  @apply p-4 border rounded mb-4 hover:bg-indigo-800 hover:text-white transition-all cursor-pointer flex items-center gap-2;
+}

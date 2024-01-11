@@ -1,0 +1,9 @@
+.wrapper-images_mini-images {
+  @apply order-2 md:order-1 gap-2 flex justify-start md:flex-col md:col-span-2;
+  .mini-image-preview {
+    @apply rounded-lg w-16 h-16 md:h-24 md:w-full md:col-span-11 object-cover;
+  }
+}
+.image-preview {
+  @apply m-auto order-1 md:order-2 rounded-lg w-full h-full col-span-10 object-cover;
+}

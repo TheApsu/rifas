@@ -1,0 +1,10 @@
+.show-list {
+  @apply rounded border bg-indigo-800 text-white px-6 py-2 flex items-center;
+}
+
+.show-create {
+  @apply rounded border border-indigo-800 bg-white text-indigo-800 px-6 py-2 flex items-center;
+  ion-icon {
+    @apply text-indigo-800;
+  }
+}

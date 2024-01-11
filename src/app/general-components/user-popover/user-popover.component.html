@@ -1,0 +1,14 @@
+<div class="content p-1">
+  <h2 class="text-xl text-center px-4 font-bold mb-2">Opciones</h2>
+  <div
+    id="item"
+    class="hover:bg-slate-200 rounded cursor-pointer p-2 px-4 flex justify-between items-center"
+    *ngFor="let button of buttons"
+    (click)="doAction(button)"
+  >
+    <p>
+      {{ button.label }}
+    </p>
+    <ion-icon [name]="button.icon"></ion-icon>
+  </div>
+</div>
