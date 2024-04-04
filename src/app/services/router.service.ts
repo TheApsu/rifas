@@ -19,18 +19,17 @@ export class RouterService {
   constructor(
     private router: Router,
     private destroyRef: DestroyRef,
-    private _windowRef: WindowsService
+    private _windowRef: WindowsService,
   ) {}
 
   setRouter() {
     this.router.events
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        filter((event) => event instanceof NavigationEnd)
+        filter((event) => event instanceof NavigationEnd),
       )
       .subscribe((event) => {
         const location = this._windowRef.getWindow()?.location.pathname;
-        console.log(location);
         if (
           location &&
           this._excludedRoutesForHeaderAndFooter.includes(location)

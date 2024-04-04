@@ -1,32 +1,43 @@
 <div class="border rounded-lg p-8 border-indigo-900">
-  <h2 class="font-bold text-3xl">HJ 250 NK implecable</h2>
+  <h2 class="font-bold text-3xl">
+    {{ rifa?.name }}
+  </h2>
   <p class="text-xl">
-    <sub> Publicador: <strong>La rapida</strong> </sub>
+    <sub>
+      Publicador:
+      <strong>
+        {{ rifa?.user?.name }}
+      </strong>
+    </sub>
   </p>
   <p class="text-xl">
-    <sub>Números disponibles: <span class="font-bold">100</span></sub>
+    <sub
+      >Números disponibles:
+      <span class="font-bold">
+        {{ rifa?.availableNumbersQuantity }}
+      </span></sub
+    >
   </p>
   <p class="text-xl">
-    <sub>Ubicación: <span class="font-bold">Táchira</span></sub>
+    <sub
+      >Ubicación:
+      <span class="font-bold">
+        {{ rifa?.location }}
+      </span></sub
+    >
   </p>
   <div class="description mt-4">
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum doloremque
-      ad odit accusantium consequatur. Ex, voluptatum! Incidunt harum, autem
-      fugiat debitis tempora quasi. Nam officiis voluptatem praesentium nesciunt
-      nemo impedit.
+      {{ rifa?.description }}
     </p>
-    <p class="price font-bold text-2xl mt-4">Precio: $100</p>
+    <p class="price font-bold text-2xl mt-4">Precio: ${{ rifa?.price }}</p>
   </div>
-  <div class="mt-4 md:mt-0 buttons-wrapper flex flex-col md:flex-row gap-2">
-    <button
-      (click)="openModal()"
-      class="bg-indigo-900 text-white px-6 py-2 rounded md:mt-4 active:bg-indigo-600 transition-colors"
-    >
+  <div class="mt-4 buttons-wrapper flex flex-col md:flex-row gap-2">
+    <button (click)="openModal()" class="primary-btn flex-1 !m-0 !block">
       Escoger número
     </button>
     <button
-      class="bg-white border-indigo-900 border text-indigo-900 px-6 py-2 rounded md:mt-4"
+      class="bg-white border-indigo-900 border text-indigo-900 px-6 py-2 rounded flex-1"
     >
       Contactar con el vendedor
     </button>

@@ -1,7 +1,12 @@
 <section class="wrapper-comments flex lg:w-1/2 flex-col m-auto">
   <h3 class="text-3xl mb-8">Preguntas y respuestas</h3>
 
-  <p class="font-bold">Preguntale a <strong>La rapida</strong></p>
+  <p class="font-bold">
+    Preguntale a
+    <strong>
+      {{ rifa.user.name }}
+    </strong>
+  </p>
 
   <div
     class="wrapper-comments_searchbar flex gap-2 mt-2"
@@ -11,6 +16,7 @@
       <app-searchbar-input
         (emitSearchValue)="setValue($event)"
         [config]="config"
+        #seachbarInput
       ></app-searchbar-input>
     </div>
     <button (click)="send()" class="py-4 px-6 bg-indigo-900 rounded text-white">
@@ -19,11 +25,29 @@
   </div>
   <div class="box-comments border p-4 mt-4">
     <h5 class="font-bold mb-2">Últimas realizadas</h5>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores amet,
-      quia dolorem repellendus nobis unde aliquid similique blanditiis omnis,
-      magni excepturi perferendis culpa eaque, molestias officiis. Ipsa aliquam
-      quibusdam illo?
-    </p>
+    @for (comment of comments; track $index) {
+      <div class="flex mb-4 gap-4 shadow rounded-lg p-4">
+        <div class="avatar rounded-full min-w-[3rem] max-h-12 overflow-hidden">
+          <img
+            class="w-12 h-12 object-cover"
+            [src]="APIUploads + comment.user.avatar"
+            [alt]="comment.user.name"
+          />
+        </div>
+        <div class="name">
+          <h4 class="m-0 font-bold">
+            {{ comment.user.name }}
+          </h4>
+          <p class="m-0 text-sm">
+            {{ comment.createdAt | date: "longDate" }}
+          </p>
+          <div class="comment mt-2 text-sm">
+            <p>
+              {{ comment.comment }}
+            </p>
+          </div>
+        </div>
+      </div>
+    }
   </div>
 </section>

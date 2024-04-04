@@ -1,0 +1,6 @@
+.sold {
+  @apply pointer-events-none opacity-60 bg-indigo-500;
+}
+.selected {
+  @apply opacity-60 bg-indigo-400 text-white;
+}

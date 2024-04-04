@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
@@ -6,6 +6,7 @@ import { UserPopoverComponent } from '../user-popover/user-popover.component';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { UiService } from '../../services/ui.service';
+import { RolTypes } from '../../constants/rol-type';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +17,12 @@ import { UiService } from '../../services/ui.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(
-    private _uiSv: UiService,
-    private _authSv: AuthService,
-    private _router: Router
-  ) {}
+  private _uiSv = inject(UiService);
+  private _authSv = inject(AuthService);
+  private _router = inject(Router);
+  public rolType = RolTypes;
+
+  constructor() {}
 
   get authSv() {
     return this._authSv;

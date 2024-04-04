@@ -86,7 +86,6 @@ export class AxisController {
 
   async dismissModal(element: HTMLDivElement | undefined) {
     return new Promise((resolve) => {
-      console.log(element);
       if (element) {
         element.classList.add('fadeout');
         setTimeout(() => {

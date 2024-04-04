@@ -47,7 +47,7 @@ export class ProfilePageComponent implements OnInit {
       const clientButtons = [
         {
           icon: 'calendar-outline',
-          routeName: './create',
+          routeName: './playing-rifas',
           route: 'Rifas en juego',
         },
       ];

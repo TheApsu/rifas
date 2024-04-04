@@ -63,3 +63,7 @@
 body {
   position: relative;
 }
+
+.primary-btn {
+  @apply text-white rounded m-auto px-4 py-2 mt-4 bg-indigo-700 flex items-center gap-2 active:bg-indigo-500 transition-colors text-center;
+}

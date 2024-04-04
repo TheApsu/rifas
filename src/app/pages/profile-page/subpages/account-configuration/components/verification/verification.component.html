@@ -5,94 +5,120 @@
     class="col-span-2 md:col-span-1"
   />
   <div class="content p-8 col-span-2 md:col-span-1">
-    <div class="description mb-4">
-      <div class="header flex justify-between">
-        <h2 class="text-3xl font-bold mb-4">Planes</h2>
-        <ion-icon
-          (click)="close()"
-          class="text-3xl cursor-pointer"
-          name="close"
-        ></ion-icon>
+    @if (!selectedPlanType) {
+      <div class="description mb-4">
+        <div class="header flex justify-between">
+          <h2 class="text-3xl font-bold mb-4">Planes</h2>
+          <ion-icon
+            (click)="close()"
+            class="text-3xl cursor-pointer"
+            name="close"
+          ></ion-icon>
+        </div>
+        <p>
+          Para poder gozar de nuestra plataforma en línea donde podrás agilizar,
+          ahorrar tiempo y dinero en ficheros de números ó vendedores, debes
+          hacer una inversion mensual, donde tendrás acceso a:
+        </p>
       </div>
-      <p>
-        Para poder gozar de nuestra plataforma en línea donde podrás agilizar,
-        ahorrar tiempo y dinero en ficheros de números ó vendedores, debes hacer
-        una inversion mensual, donde tendrás acceso a:
-      </p>
-    </div>
-    <div class="plan-container">
-      <div class="plan-name-container mb-5">
-        <h4 class="plan-name">Plan Básico</h4>
+      <div class="plan-container">
+        <div class="plan-name-container mb-5">
+          <h4 class="plan-name">Plan Básico</h4>
+        </div>
+        <h2><span class="text-4xl font-bold">$2</span> / Mensuales</h2>
+        <ul class="advantages">
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Administrar
+            desde la comodidad de tú casa
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Automatización
+            de la venta
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Alcance de tu
+            rifa en diversos estados sin esfuerzo
+          </li>
+
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Publicar
+            máximo 3 rifas por mes
+          </li>
+          <li class="locked">
+            <ion-icon name="lock-closed-outline"></ion-icon> Publicar rifas
+            ilimitadas ( máximo 3 por mes )
+          </li>
+          <li class="locked">
+            <ion-icon name="lock-closed-outline"></ion-icon> Relevancia en las
+            busquedas
+          </li>
+          <li class="locked">
+            <ion-icon name="lock-closed-outline"></ion-icon> Sello de promotor
+            verificado
+          </li>
+        </ul>
+        <button class="choose-btn" (click)="choosePlan(planType.BASIC)">
+          Escoger
+        </button>
       </div>
-      <h2><span class="text-4xl font-bold">$2</span> / Mensuales</h2>
-      <ul class="advantages">
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Administrar
-          desde la comodidad de tú casa
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Automatización
-          de la venta
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Alcance de tu
-          rifa en diversos estados sin esfuerzo
-        </li>
 
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Publicar máximo
-          3 rifas por mes
-        </li>
-        <li class="locked">
-          <ion-icon name="lock-closed-outline"></ion-icon> Publicar rifas
-          ilimitadas ( máximo 3 por mes )
-        </li>
-        <li class="locked">
-          <ion-icon name="lock-closed-outline"></ion-icon> Relevancia en las
-          busquedas
-        </li>
-        <li class="locked">
-          <ion-icon name="lock-closed-outline"></ion-icon> Sello de promotor
-          verificado
-        </li>
-      </ul>
-      <button class="choose-btn">Escoger</button>
-    </div>
+      <div class="plan-container">
+        <div class="plan-name-container mb-5">
+          <h4 class="plan-name">Plan Full</h4>
+          <div class="badge">Popular</div>
+        </div>
+        <h2><span class="text-4xl font-bold">$5</span> / Mensuales</h2>
+        <ul class="advantages">
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Administrar
+            desde la comodidad de tú casa
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Automatización
+            de la venta
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Alcance de tu
+            rifa en diversos estados sin esfuerzo
+          </li>
 
-    <div class="plan-container">
-      <div class="plan-name-container mb-5">
-        <h4 class="plan-name">Plan Full</h4>
-        <div class="badge">Popular</div>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Publicar rifas
+            ilimitadas
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Relevancia en
+            las busquedas
+          </li>
+          <li>
+            <ion-icon name="checkmark-circle-outline"></ion-icon> Sello de
+            promotor verificado
+          </li>
+        </ul>
+        <button class="choose-btn" (click)="choosePlan(planType.FULL)">
+          Escoger
+        </button>
       </div>
-      <h2><span class="text-4xl font-bold">$5</span> / Mensuales</h2>
-      <ul class="advantages">
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Administrar
-          desde la comodidad de tú casa
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Automatización
-          de la venta
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Alcance de tu
-          rifa en diversos estados sin esfuerzo
-        </li>
-
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Publicar rifas
-          ilimitadas
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Relevancia en
-          las busquedas
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle-outline"></ion-icon> Sello de
-          promotor verificado
-        </li>
-      </ul>
-      <button class="choose-btn">Escoger</button>
-    </div>
+    } @else {
+      <div class="plan-container">
+        <div class="plan-name-container mb-5">
+          <h4 class="plan-name">Datos pago movil</h4>
+        </div>
+        <ul class="advantages">
+          <li><ion-icon name="id-card-outline"></ion-icon> 10.174.522</li>
+          <li><ion-icon name="card-outline"></ion-icon> Venezuela</li>
+          <li><ion-icon name="call-outline"></ion-icon> 0424-751-2711</li>
+        </ul>
+      </div>
+      <div class="report-payment plan-container">
+        <div class="plan-name-container mb-5">
+          <h4 class="plan-name">Reportar pago</h4>
+        </div>
+        <app-dynamic-form
+          [fields]="fields"
+          (emitSubmit)="sendReport($event)"
+        ></app-dynamic-form>
+      </div>
+    }
   </div>
 </div>

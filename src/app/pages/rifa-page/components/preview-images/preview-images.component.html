@@ -1,16 +1,18 @@
 <div>
   <div class="wrapper-images flex flex-col md:grid md:grid-cols-12 gap-2">
     <div class="wrapper-images_mini-images">
-      <img
-        class="mini-image-preview"
-        src="https://http2.mlstatic.com/D_NQ_NP_795168-MLV70411586376_072023-O.webp"
-        alt="tt"
-      />
+      @for (item of rifa?.images; track $index) {
+        <img
+          class="mini-image-preview"
+          [src]="vImageUrl + 'rifas/' + item"
+          [alt]="rifa?.name"
+        />
+      }
     </div>
     <img
       class="image-preview"
-      src="https://http2.mlstatic.com/D_NQ_NP_795168-MLV70411586376_072023-O.webp"
-      alt=""
+      [src]="vImageUrl + 'rifas/' + vSelectedImg"
+      [alt]="rifa?.name"
     />
   </div>
 </div>

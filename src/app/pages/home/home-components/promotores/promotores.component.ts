@@ -1,10 +1,17 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SwiperModule } from 'swiper/angular';
 import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
 import { PromotoresCardComponent } from '../promotores-card/promotores-card.component';
 import { breakpointsTypes } from '../../../../constants/breakpoints-type';
+import { HttpService } from '../../../../services/http.service';
+import { User } from '../../../../interfaces/user_interface';
 
 SwiperCore.use([Navigation]);
 
@@ -16,8 +23,8 @@ SwiperCore.use([Navigation]);
   styleUrl: './promotores.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PromotoresComponent {
-  swiperOptions: SwiperOptions = {
+export class PromotoresComponent implements OnInit {
+  public swiperOptions: SwiperOptions = {
     slidesPerView: 1.1,
     spaceBetween: 0,
     navigation: true,
@@ -33,4 +40,11 @@ export class PromotoresComponent {
       },
     },
   };
+  public promotors: User[] = [];
+  private _vHttpSv = inject(HttpService);
+
+  async ngOnInit() {
+    const vRes = await this._vHttpSv.get('api/user/getPromotors');
+    this.promotors = vRes.users;
+  }
 }

@@ -52,7 +52,7 @@ export class SigninPageComponent {
   async signIn(ev: Event) {
     ev.preventDefault();
     if (this.register) {
-      await this._authSv.createUser(this.formGroup.value, ev);
+      await this._authSv.createOrUpdateUser(this.formGroup.value, ev);
     } else {
       await this._authSv.signIn(this.formGroup.value, ev);
     }

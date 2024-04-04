@@ -1,12 +1,19 @@
-import { Component, DestroyRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from '../../../../../../general-components/dynamic-form/dynamic-form.component';
 import { DynamicForm } from '../../../../../../interfaces/dynamic_form';
-import { Rifa } from '../../../../../../interfaces/rifa_interface';
+import { IRifa } from '../../../../../../interfaces/rifa_interface';
 import { RifasService } from '../../create-services/rifas.service';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { uris } from '../../../../../../constants/uri-types';
+import { LocationService } from '../../../../../../services/location.service';
 
 @Component({
   selector: 'app-create-or-edit',
@@ -17,7 +24,7 @@ import { uris } from '../../../../../../constants/uri-types';
 })
 export class CreateOrEditComponent implements OnInit {
   @ViewChild('dynamicForm') dynamicForm?: DynamicFormComponent;
-  private _rifa?: Rifa = undefined;
+  private _rifa?: IRifa = undefined;
   public uriTypes = uris;
   public fields: DynamicForm[] = [
     {
@@ -78,6 +85,7 @@ export class CreateOrEditComponent implements OnInit {
   ];
 
   private _id?: string;
+  private _locationSv = inject(LocationService);
 
   constructor(
     private _rifaSv: RifasService,
@@ -94,6 +102,13 @@ export class CreateOrEditComponent implements OnInit {
           await this.showRifa();
         }
       });
+    const vLocationField = this.fields.find((x) => x.fieldName === 'location')!;
+    vLocationField.options = this._locationSv.locations.map((location) => {
+      return {
+        label: location.estado,
+        value: location.estado,
+      };
+    });
   }
 
   async showRifa() {
@@ -108,7 +123,7 @@ export class CreateOrEditComponent implements OnInit {
     this.dynamicForm?.patchValue(this._rifa);
   }
 
-  async createRifa(ev: Rifa) {
+  async createRifa(ev: IRifa) {
     try {
       if (this._rifa) {
         ev._id = this._id;

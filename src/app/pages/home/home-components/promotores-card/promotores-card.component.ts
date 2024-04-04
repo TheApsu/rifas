@@ -1,5 +1,7 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { User } from '../../../../interfaces/user_interface';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-promotores-card',
@@ -9,4 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './promotores-card.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class PromotoresCardComponent {}
+export class PromotoresCardComponent {
+  @Input() promotor!: User;
+  public url = environment.uploads;
+}

@@ -1,12 +1,12 @@
 <div class="container p-4">
   <div
     id="card-product"
-    [routerLink]="['/rifa', product.id]"
+    [routerLink]="['/rifa', product._id]"
     class="w-full h-auto cursor-pointer shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden"
   >
     <img
       class="w-full aspect-square object-cover"
-      src="https://http2.mlstatic.com/D_NQ_NP_795168-MLV70411586376_072023-O.webp"
+      [src]="apiURL + 'rifas/' + product.images[0]"
       alt="rifas"
       loading="lazy"
     />
@@ -15,12 +15,21 @@
         id="name-product"
         class="text-slate-900 whitespace-nowrap font-extrabold text-base md:text-xl overflow-hidden text-ellipsis"
       >
-        <strong>HJ 250 NK implecable color negro</strong>
+        <strong>
+          {{ product.name }}
+        </strong>
       </p>
-      <p class="text-sm md:text-base font-bold">$100,00</p>
+      <p class="text-sm md:text-base font-bold">
+        ${{ product.price | number: "1.1-2" }}
+      </p>
       <div class="flex items-start md:items-center gap-2">
         <ion-icon name="ticket-outline"></ion-icon>
-        <p class="text-sm md:text-lg">Tickets restantes: <b>100</b></p>
+        <p class="text-sm md:text-lg">
+          Tickets restantes:
+          <b>
+            {{ product.availableNumbersQuantity }}
+          </b>
+        </p>
       </div>
     </div>
     <div class="container p-4">
@@ -28,7 +37,7 @@
         class="text-sm md:text-base flex w-fit items-center gap-2 py-1 font-bold px-4 rounded-full bg-slate-200 text-slate-600"
       >
         <ion-icon name="location-outline"></ion-icon>
-        Tachira
+        {{ product.location }}
       </span>
     </div>
   </div>

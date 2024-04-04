@@ -1,11 +1,13 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpService } from '../../../../../services/http.service';
 import { DynamicFormComponent } from '../../../../../general-components/dynamic-form/dynamic-form.component';
 import { ToastControllerService } from '../../../../../utilities/toast/toast-controller-service';
-import { Rifa } from '../../../../../interfaces/rifa_interface';
+import { IRifa } from '../../../../../interfaces/rifa_interface';
 import { Option } from '../../../../../interfaces/dynamic_form';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocationService } from '../../../../../services/location.service';
+import { ICommentToCreate } from '../../../../../interfaces/comment_interface';
+import { UiService } from '../../../../../services/ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +15,11 @@ import { LocationService } from '../../../../../services/location.service';
 export class RifasService {
   public segment = 'create';
 
-  public createdRifas = signal<Rifa[]>([]);
+  public createdRifas = signal<IRifa[]>([]);
   public page = 1;
   public search = '';
+
+  private _vUiSv = inject(UiService);
 
   public loading = false;
 
@@ -45,7 +49,7 @@ export class RifasService {
         search: this.search,
       };
       const res = await this._httpSv.get('api/rifa/get', params);
-      const rifas: Rifa[] = res.docs;
+      const rifas: IRifa[] = res.docs;
       this._totalPages = res.totalPages;
       this.createdRifas.update((value) => {
         value = rifas;
@@ -88,8 +92,8 @@ export class RifasService {
 
   async createOrEditRifa(
     dynamicForm?: DynamicFormComponent,
-    body?: Rifa,
-  ): Promise<Rifa | undefined> {
+    body?: IRifa,
+  ): Promise<IRifa | undefined> {
     try {
       const action = body?._id ? 'update' : 'create';
       const res = await this._httpSv.post(`api/rifa/${action}`, body!);
@@ -135,6 +139,16 @@ export class RifasService {
     } catch (err) {
       console.error(err);
       return [];
+    }
+  }
+
+  async createComment(body: ICommentToCreate) {
+    try {
+      const res = await this._httpSv.post('api/rifa/createComment', body);
+      return res;
+    } catch (error) {
+      console.log('error :>> ', error);
+      await this._vUiSv.showToast('Ha ocurrido un error');
     }
   }
 }

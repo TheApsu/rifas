@@ -1,18 +1,56 @@
 <div class="wrapper p-4">
   <div class="toolbar flex justify-between mb-2">
-    <h2 class="font-bold text-3xl">Números pendientes</h2>
+    <h2 class="font-bold text-3xl">Números disponibles</h2>
     <button (click)="close()">
       <ion-icon class="text-3xl" name="close"></ion-icon>
     </button>
   </div>
-  <div class="grid grid-cols-10">
+  <p class="text-lg mb-2">Presiona los numeros que deseas adquirir</p>
+  <div class="grid grid-cols-10 rounded-md border overflow-hidden">
     @for (item of numbers; track item) {
-    <div
-      class="border p-2 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors"
-    >
-      {{ $index }}
-    </div>
-
+      <div
+        [ngClass]="{ sold: item.sold, selected: item.clicked }"
+        (click)="addNumber(item, $index)"
+        class="border p-2 hover:bg-indigo-800 hover:text-white cursor-pointer transition-colors"
+      >
+        {{ item.number }}
+      </div>
     }
+  </div>
+  <div>
+    <p class="text-lg mt-4 font-bold">Monto total a pagar</p>
+    <div class="flex items-center justify-between">
+      <p
+        class="text-2xl"
+        [ngClass]="{ 'font-bold': (numbers | filterClickedNumbers).length }"
+      >
+        {{
+          (numbers | filterClickedNumbers).length
+            ? "$" + (numbers | filterClickedNumbers).length * price
+            : "El monto se verá reflejado cuando se haya seleccionado al menos un número."
+        }}
+      </p>
+      @if ((numbers | filterClickedNumbers).length) {
+        <button class="primary-btn !m-0" (click)="buyNumbers()">
+          Continuar
+          <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
+        </button>
+      }
+    </div>
+    <!-- <div>
+      <div class="grid grid-cols-12 gap-4">
+        @for (item of numbers | filterClickedNumbers; track $index) {
+          <div
+            class="rounded-full text-center text-xs border-[1px] border-indigo-600 text-indigo-600 bg-indigo-100 px-2 py-1"
+          >
+            {{ item.number }}
+          </div>
+        } @empty {
+          <div class="col-span-10">
+            <p class="">Aun no se han agregado números.</p>
+          </div>
+        }
+      </div>
+    </div> -->
   </div>
 </div>

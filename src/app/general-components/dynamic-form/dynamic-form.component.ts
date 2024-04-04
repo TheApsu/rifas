@@ -57,7 +57,6 @@ export class DynamicFormComponent implements OnInit {
         }
       }
     });
-    console.log('obj :>> ', obj);
     this.formGroup = this._fb.group(obj);
   }
 

@@ -7,7 +7,7 @@
       class="avatar rounded-full w-24 h-24 shadow-xl -top-1/3 overflow-hidden absolute left-2/4 -translate-x-2/4"
     >
       <img
-        src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7a3ec529632909.55fc107b84b8c.png"
+        [src]="url + promotor.avatar"
         alt="promotora-la-rapida"
         class="h-full w-full object-cover"
         loading="lazy"
@@ -17,7 +17,7 @@
       <h3
         class="font-bold text-lg overflow-hidden text-ellipsis whitespace-nowrap"
       >
-        Promotora la rapida
+        {{ promotor.name }}
       </h3>
       <div class="wrapper-button mt-4">
         <a

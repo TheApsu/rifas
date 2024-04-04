@@ -1,43 +1,50 @@
 <div class="w-full min-h-screen bg-white">
   <app-banner></app-banner>
   @defer (on viewport) {
-  <app-promotores></app-promotores>
+    <app-promotores></app-promotores>
   } @placeholder {
-  <p>
-    <span> Loading... </span>
-  </p>
-  } @defer (on viewport) {
-  <app-recently-section
-    [title]="'Las mas populares'"
-    [icon]="'trending-up-outline'"
-  ></app-recently-section>
+    <p>
+      <span> Loading... </span>
+    </p>
+  }
+  @defer (on viewport) {
+    <app-recently-section
+      [title]="'Las mas populares'"
+      [icon]="'trending-up-outline'"
+      [route]="'mostview'"
+    ></app-recently-section>
   } @placeholder {
-  <p>
-    <span>Loading...</span>
-  </p>
-  } @defer(on viewport){
-  <app-recently-section
-    [title]="'Rifas nuevas'"
-    [icon]="'color-wand-outline'"
-  ></app-recently-section>
+    <p>
+      <span>Loading...</span>
+    </p>
+  }
+  @defer (on viewport) {
+    <app-recently-section
+      [title]="'Rifas nuevas'"
+      [icon]="'color-wand-outline'"
+      [route]="'recently'"
+    ></app-recently-section>
   } @placeholder {
-  <p>
-    <span>Loading...</span>
-  </p>
-  } @defer(on viewport){
-  <app-recently-section
-    [title]="'Pocos numeros'"
-    [icon]="'rocket-outline'"
-  ></app-recently-section>
-  }@placeholder {
-  <p>
-    <span>Loading...</span>
-  </p>
-  } @defer(on viewport){
-  <app-banner></app-banner>
-  }@placeholder {
-  <p>
-    <span>Loading...</span>
-  </p>
+    <p>
+      <span>Loading...</span>
+    </p>
+  }
+  @defer (on viewport) {
+    <app-recently-section
+      [title]="'Pocos numeros'"
+      [icon]="'rocket-outline'"
+      [route]="'fewtickets'"
+    ></app-recently-section>
+  } @placeholder {
+    <p>
+      <span>Loading...</span>
+    </p>
+  }
+  @defer (on viewport) {
+    <app-banner></app-banner>
+  } @placeholder {
+    <p>
+      <span>Loading...</span>
+    </p>
   }
 </div>

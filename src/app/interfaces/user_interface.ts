@@ -1,10 +1,13 @@
+import { RolTypes } from '../constants/rol-type';
+
 export interface User {
-  avatar?: string;
+  avatar: string;
   name: string;
+  rolType: RolTypes;
   email: string;
-  password: string;
-  rolType: number;
+  password?: string;
   confirmPassword?: string;
-  phoneNumber?: string;
-  _id?: string;
+  phoneNumber: string;
+  location: string;
+  verificated: boolean;
 }

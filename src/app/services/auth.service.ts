@@ -46,12 +46,13 @@ export class AuthService {
     }
   }
 
-  async createUser(value: User, ev: Event) {
+  async createOrUpdateUser(value: User, ev?: Event) {
     try {
-      ev.preventDefault();
+      ev?.preventDefault();
       if (value.password === value.confirmPassword) {
+        const action = this._user ? 'update' : 'create';
         const res: UserResponse = await this._httpSv.post(
-          'api/user/create',
+          `api/user/${action}`,
           value,
         );
         await this.controlleUserData(res);
@@ -112,6 +113,8 @@ export class AuthService {
   }
 
   async saveUserData(res: UserResponse) {
+    delete res.user.password;
+    delete res.user.confirmPassword;
     this._storageSv.createOrUpdateLocalStorage(
       'user',
       JSON.stringify(res.user),
@@ -126,5 +129,15 @@ export class AuthService {
     this._storageSv.removeLocalStorage('user_token');
     this._storageSv.removeLocalStorage('user');
     await this._router.navigateByUrl('signin');
+  }
+
+  async updateUser(body: User) {
+    try {
+      const res = await this._httpSv.post('api/user/update', body);
+      await this.controlleUserData(res);
+    } catch (error) {
+      console.error(error);
+      this._uiSv.showToast('Ha ocurrido un error');
+    }
   }
 }

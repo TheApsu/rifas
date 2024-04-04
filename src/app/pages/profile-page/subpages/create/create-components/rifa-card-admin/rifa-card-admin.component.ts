@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Rifa } from '../../../../../../interfaces/rifa_interface';
+import { IRifa } from '../../../../../../interfaces/rifa_interface';
 import { environment } from '../../../../../../../environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RifasService } from '../../create-services/rifas.service';
@@ -14,7 +14,7 @@ import { RifasService } from '../../create-services/rifas.service';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class RifaCardAdminComponent {
-  @Input() item!: Rifa;
+  @Input() item!: IRifa;
   public url = environment.uploads;
 
   constructor(

@@ -4,9 +4,9 @@
     Nuestros promotores verificados
   </h2>
   <swiper [config]="swiperOptions">
-    @for (item of [1, 1, 1, 1, 1, 1, 1, 1]; track $index) {
+    @for (promotor of promotors; track $index) {
       <ng-template swiperSlide>
-        <app-promotores-card></app-promotores-card>
+        <app-promotores-card [promotor]="promotor"></app-promotores-card>
       </ng-template>
     }
   </swiper>

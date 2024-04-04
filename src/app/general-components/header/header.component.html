@@ -35,9 +35,11 @@
     </div>
   </nav>
 </header>
-<div class="alert bg-yellow-100 p-4 sticky top-0 w-full z-50">
-  <p class="text-slate-900">
-    Debes escoger un plan antes de comenzar a publicar rifas.
-    <a routerLink="/profile/settings" class="font-bold underline">Escoger</a>
-  </p>
-</div>
+@if (authSv.user?.rolType === rolType.PROMOTOR && !authSv.user?.verificated) {
+  <div class="alert bg-yellow-100 p-4 sticky top-0 w-full z-50">
+    <p class="text-slate-900">
+      Debes escoger un plan antes de comenzar a publicar rifas.
+      <a routerLink="/profile/settings" class="font-bold underline">Escoger</a>
+    </p>
+  </div>
+}

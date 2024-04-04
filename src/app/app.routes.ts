@@ -47,6 +47,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'playing-rifas',
+        loadComponent: () =>
+          import(
+            './pages/profile-page/subpages/playing-rifas/playing-rifas.component'
+          ).then((x) => x.PlayingRifasComponent),
+      },
+      {
         path: '',
         redirectTo: 'settings',
         pathMatch: 'full',

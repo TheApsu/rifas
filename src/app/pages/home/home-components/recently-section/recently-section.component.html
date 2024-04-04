@@ -1,20 +1,22 @@
-<div class="pb-8 container mx-auto">
-  <div class="flex justify-between sm:justify-normal gap-3 items-center px-4">
-    @if (icon) {
-    <ion-icon class="text-3xl" [name]="icon"></ion-icon>
-    }
-    <h2 class="text-2xl font-bold flex-1 mb-2 w-fit lg:text-3xl">
-      {{ title }}
-    </h2>
-    <a href="#">
-      <ion-icon name="chevron-forward"></ion-icon>
-    </a>
+@if (rifas.length) {
+  <div class="pb-8 container mx-auto">
+    <div class="flex justify-between sm:justify-normal gap-3 items-center px-4">
+      @if (icon) {
+        <ion-icon class="text-3xl" [name]="icon"></ion-icon>
+      }
+      <h2 class="text-2xl font-bold flex-1 mb-2 w-fit lg:text-3xl">
+        {{ title }}
+      </h2>
+      <a href="#">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </a>
+    </div>
+    <swiper [config]="swiperOptions">
+      @for (item of this.rifas; track $index) {
+        <ng-template swiperSlide>
+          <app-card-product [product]="item"></app-card-product>
+        </ng-template>
+      }
+    </swiper>
   </div>
-  <swiper [config]="swiperOptions">
-    @for (item of [1, 1, 1, 1, 1, 1, 1, 1, 1]; ; let idx = $index; track idx) {
-    <ng-template swiperSlide>
-      <app-card-product [product]="{ id: idx }"></app-card-product>
-    </ng-template>
-    }
-  </swiper>
-</div>
+}

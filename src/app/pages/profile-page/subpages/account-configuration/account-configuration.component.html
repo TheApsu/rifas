@@ -1,11 +1,12 @@
-<app-change-avatar></app-change-avatar>
+<app-change-avatar #avatarComponent></app-change-avatar>
 <div class="container m-auto text-center">
-  <button
-    (click)="verifyUser()"
-    class="text-white rounded m-auto px-4 py-2 mt-4 bg-indigo-700 flex items-center gap-2 active:bg-indigo-500 transition-colors"
-  >
+  <button (click)="verifyUser()" class="primary-btn">
     <ion-icon name="star"></ion-icon>
     Escoger
   </button>
 </div>
-<app-dynamic-form [fields]="fields"></app-dynamic-form>
+<app-dynamic-form
+  #dynamicForm
+  [fields]="fields"
+  (emitSubmit)="updateProfile($event)"
+></app-dynamic-form>
